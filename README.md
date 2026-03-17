@@ -98,19 +98,4 @@
 </tr>
 </table>
 
-### Self-Hosted
-
-<table>
-<tr>
-<td align="center" width="100"><a href="#"><img src="assets/umami.png" height="45" alt="Umami" /></a><br>Umami</td>
-<td align="center" width="100"><a href="#"><img src="assets/plausible.png" height="45" alt="Plausible" /></a><br>Plausible</td>
-<td align="center" width="100"><a href="#"><img src="assets/beszel.png" height="45" alt="Beszel" /></a><br>Beszel</td>
-<td align="center" width="100"><a href="#"><img src="assets/uptime-kuma.png" height="45" alt="Uptime Kuma" /></a><br>Uptime Kuma</td>
-</tr>
-<tr>
-<td align="center" width="100"><a href="#"><img src="assets/portainer.png" height="45" alt="Portainer" /></a><br>Portainer</td>
-<td align="center" width="100"><a href="#"><img src="assets/planka.png" height="45" alt="Planka" /></a><br>Planka</td>
-</tr>
-</table>
-
 </div>
