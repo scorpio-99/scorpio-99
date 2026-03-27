@@ -84,7 +84,7 @@ def svg_document(width: int, height: int, body: str) -> str:
     return "\n".join([
         f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
         f' width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="{THEME["bg"]}" rx="6"/>',
+        f'<rect width="{width}" height="{height}" fill="transparent"/>',
         body,
         "</svg>",
     ])

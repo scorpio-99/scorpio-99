@@ -17,8 +17,8 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # GitHub dark theme
 THEME: dict[str, str | dict[int, str]] = {
     "bg": "#0d1117",
-    "text": "#e6edf3",
-    "text_secondary": "#848d97",
+    "text": "#ffffff",
+    "text_secondary": "#ffffff",
     "border": "#21262d",
     "font": "-apple-system, Segoe UI, Helvetica, Arial, sans-serif",
     "contribution_levels": {

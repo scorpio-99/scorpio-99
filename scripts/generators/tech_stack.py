@@ -9,8 +9,8 @@ from svg_utils import read_svg, svg_document
 
 COLS: int = 6
 CELL_W: int = 130
-CELL_H: int = 105
-ICON_SIZE: int = 52
+CELL_H: int = 120
+ICON_SIZE: int = 60
 PADDING_X: int = 28
 PADDING_Y: int = 24
 HEADER_H: int = 44
@@ -63,7 +63,7 @@ def _render_item(logo_file: str, label: str, folder: str,
         parts.append(inner)
         parts.append("</svg>")
 
-    ly = cy + ICON_SIZE + 22
+    ly = cy + ICON_SIZE + 28
     parts.append(
         f'<text x="{cx}" y="{ly}" fill="{THEME["text_secondary"]}"'
         f' class="label" text-anchor="middle">{escape(label)}</text>'
