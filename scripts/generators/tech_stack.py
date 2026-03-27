@@ -7,14 +7,14 @@ from html import escape
 from config import LOGO_DIR, TECH_STACK, THEME
 from svg_utils import read_svg, svg_document
 
-COLS: int = 8
-CELL_W: int = 100
-CELL_H: int = 80
-ICON_SIZE: int = 38
-PADDING_X: int = 24
-PADDING_Y: int = 20
-HEADER_H: int = 36
-SECTION_GAP: int = 12
+COLS: int = 6
+CELL_W: int = 130
+CELL_H: int = 105
+ICON_SIZE: int = 52
+PADDING_X: int = 28
+PADDING_Y: int = 24
+HEADER_H: int = 44
+SECTION_GAP: int = 16
 
 SVG_WIDTH: int = PADDING_X * 2 + COLS * CELL_W
 
@@ -95,8 +95,8 @@ def generate_svg() -> str:
 
     style = "\n".join([
         "<style>",
-        f'  .header {{ font: bold 13px {font}; }}',
-        f'  .label {{ font: 11px {font}; }}',
+        f'  .header {{ font: bold 15px {font}; }}',
+        f'  .label {{ font: 13px {font}; }}',
         "</style>",
     ])
 
