@@ -8,18 +8,21 @@ USERNAME: str = "scorpio-99"
 PROJECT_ROOT: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGO_DIR: str = os.path.join(PROJECT_ROOT, "assets", "logos")
 OUTPUT_DIR: str = os.path.join(PROJECT_ROOT, "assets", "generated")
-OUTPUT_CONTRIBUTION_GRAPH: str = os.path.join(OUTPUT_DIR, "github-contribution-graph.svg")
 OUTPUT_DASHBOARD: str = os.path.join(OUTPUT_DIR, "github-dashboard.svg")
-OUTPUT_TECH_STACK: str = os.path.join(OUTPUT_DIR, "github-tech-stack.svg")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # GitHub dark theme
-THEME: dict[str, str | dict[int, str]] = {
+THEME: dict = {
     "bg": "#0d1117",
+    "bg_alt": "#161b22",
     "text": "#ffffff",
-    "text_secondary": "#ffffff",
+    "text_dim": "#8b949e",
+    "green": "#39d353",
     "border": "#21262d",
+    "border_light": "#30363d",
+    "titlebar": "#21262d",
+    "font_mono": "Consolas, Monaco, monospace",
     "font": "-apple-system, Segoe UI, Helvetica, Arial, sans-serif",
     "contribution_levels": {
         0: "#161b22",

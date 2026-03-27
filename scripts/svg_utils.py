@@ -4,7 +4,6 @@ import re
 import sys
 from html import escape
 
-from config import THEME
 
 # Event handler attributes to strip from untrusted SVG content.
 _EVENT_HANDLER_RE = re.compile(
@@ -78,16 +77,6 @@ def _prefix_ids(svg_content: str, prefix: str) -> str:
         )
     return svg_content
 
-
-def svg_document(width: int, height: int, body: str) -> str:
-    """Wrap SVG body in a complete document with dark background."""
-    return "\n".join([
-        f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
-        f' width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="transparent"/>',
-        body,
-        "</svg>",
-    ])
 
 
 def write_svg(path: str, content: str) -> None:

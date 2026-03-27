@@ -18,7 +18,6 @@ class GitHubAPIError(Exception):
 class GitHubStats:
     repos: int = 0
     stars: int = 0
-    followers: int = 0
     total_contributions: int = 0
 
 
@@ -34,8 +33,6 @@ query($login: String!) {
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
       nodes { stargazerCount }
     }
-
-    followers { totalCount }
   }
 }
 """
@@ -138,6 +135,5 @@ def fetch_stats(username: str) -> GitHubStats:
     return GitHubStats(
         repos=_get_nested(user, "allRepos", "totalCount"),
         stars=stars,
-        followers=_get_nested(user, "followers", "totalCount"),
         total_contributions=total_contributions,
     )
