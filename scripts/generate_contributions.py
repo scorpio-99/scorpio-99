@@ -8,11 +8,11 @@ from svg_utils import write_svg
 
 
 def main():
-    contributions = fetch_contributions(USERNAME)
-    if not contributions:
+    days, total = fetch_contributions(USERNAME)
+    if not days:
         print("No contribution data found.", file=sys.stderr)
         sys.exit(1)
-    svg = generate_svg(contributions)
+    svg = generate_svg(days, total)
     write_svg(OUTPUT_CONTRIBUTION_GRAPH, svg)
 
 

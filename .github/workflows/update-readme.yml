@@ -20,8 +20,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate contribution graph
-        run: python scripts/generate_contributions.py
+      - name: Generate dashboard
+        run: python scripts/generate_dashboard.py
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
 
       - name: Generate tech stack
         run: python scripts/generate_tech_stack.py
@@ -30,5 +32,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/generated/github-contribution-graph.svg assets/generated/github-tech-stack.svg
+          git add assets/generated/
           git diff --staged --quiet || (git commit -m "chore: update profile README assets" && git push)

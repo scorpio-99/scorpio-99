@@ -2,22 +2,25 @@
 
 import os
 
-USERNAME = "scorpio-99"
+USERNAME: str = "scorpio-99"
 
 # All paths relative to project root
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOGO_DIR = os.path.join(PROJECT_ROOT, "assets", "logos")
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "assets", "generated")
-OUTPUT_CONTRIBUTION_GRAPH = os.path.join(OUTPUT_DIR, "github-contribution-graph.svg")
-OUTPUT_TECH_STACK = os.path.join(OUTPUT_DIR, "github-tech-stack.svg")
+PROJECT_ROOT: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOGO_DIR: str = os.path.join(PROJECT_ROOT, "assets", "logos")
+OUTPUT_DIR: str = os.path.join(PROJECT_ROOT, "assets", "generated")
+OUTPUT_CONTRIBUTION_GRAPH: str = os.path.join(OUTPUT_DIR, "github-contribution-graph.svg")
+OUTPUT_DASHBOARD: str = os.path.join(OUTPUT_DIR, "github-dashboard.svg")
+OUTPUT_TECH_STACK: str = os.path.join(OUTPUT_DIR, "github-tech-stack.svg")
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # GitHub dark theme
-THEME = {
+THEME: dict[str, str | dict[int, str]] = {
     "bg": "#0d1117",
     "text": "#e6edf3",
     "text_secondary": "#848d97",
     "border": "#21262d",
-    "font": '-apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
+    "font": "-apple-system, Segoe UI, Helvetica, Arial, sans-serif",
     "contribution_levels": {
         0: "#161b22",
         1: "#0e4429",
@@ -28,7 +31,7 @@ THEME = {
 }
 
 # Tech stack: (display_name, folder, [(logo_file, label), ...])
-TECH_STACK = [
+TECH_STACK: list[tuple[str, str, list[tuple[str, str]]]] = [
     ("Languages", "languages", [
         ("python.svg", "Python"),
         ("javascript.svg", "JavaScript"),

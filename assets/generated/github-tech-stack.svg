@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="848" height="956" viewBox="0 0 848 956">
 <rect width="848" height="956" fill="#0d1117" rx="6"/>
 <style>
-  .header { font: bold 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-  .label { font: 11px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .header { font: bold 13px -apple-system, Segoe UI, Helvetica, Arial, sans-serif; }
+  .label { font: 11px -apple-system, Segoe UI, Helvetica, Arial, sans-serif; }
 </style>
 <text x="24" y="36" fill="#e6edf3" class="header">Languages</text>
 <line x1="24" y1="48" x2="824" y2="48" stroke="#21262d" stroke-width="1"/>

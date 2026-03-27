@@ -7,16 +7,16 @@ from html import escape
 from config import LOGO_DIR, TECH_STACK, THEME
 from svg_utils import read_svg, svg_document
 
-COLS = 8
-CELL_W = 100
-CELL_H = 80
-ICON_SIZE = 38
-PADDING_X = 24
-PADDING_Y = 20
-HEADER_H = 36
-SECTION_GAP = 12
+COLS: int = 8
+CELL_W: int = 100
+CELL_H: int = 80
+ICON_SIZE: int = 38
+PADDING_X: int = 24
+PADDING_Y: int = 20
+HEADER_H: int = 36
+SECTION_GAP: int = 12
 
-SVG_WIDTH = PADDING_X * 2 + COLS * CELL_W
+SVG_WIDTH: int = PADDING_X * 2 + COLS * CELL_W
 
 
 def _section_height(item_count: int) -> int:
@@ -72,7 +72,7 @@ def _render_item(logo_file: str, label: str, folder: str,
 
 
 def _render_section(section_idx: int, name: str, folder: str,
-                    items: list, y: int) -> list[str]:
+                    items: list[tuple[str, str]], y: int) -> list[str]:
     parts = _render_header(name, y)
     y += HEADER_H
 

@@ -2,8 +2,28 @@
 
 import re
 import sys
+from html import escape
 
 from config import THEME
+
+# Event handler attributes to strip from untrusted SVG content.
+_EVENT_HANDLER_RE = re.compile(
+    r'\s+on[a-z]+\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',
+    re.IGNORECASE,
+)
+
+
+def _sanitize_svg(content: str) -> str:
+    """Remove dangerous elements and attributes from SVG content."""
+    content = re.sub(r"<script[\s>].*?</script>", "", content, flags=re.DOTALL | re.IGNORECASE)
+    content = re.sub(r"<style[\s>].*?</style>", "", content, flags=re.DOTALL | re.IGNORECASE)
+    content = _EVENT_HANDLER_RE.sub("", content)
+    return content
+
+
+def _escape_viewbox(value: str) -> str:
+    """Escape a viewBox value so it cannot break out of the attribute."""
+    return escape(value, quote=True)
 
 
 def read_svg(path: str, id_prefix: str) -> tuple[str, str]:
@@ -20,8 +40,10 @@ def read_svg(path: str, id_prefix: str) -> tuple[str, str]:
         print(f"Warning: {path} not found, skipping", file=sys.stderr)
         return "", ""
 
+    content = _sanitize_svg(content)
+
     vb_match = re.search(r'viewBox="([^"]*)"', content)
-    viewbox = vb_match.group(1) if vb_match else "0 0 128 128"
+    viewbox = _escape_viewbox(vb_match.group(1) if vb_match else "0 0 128 128")
 
     content = re.sub(r"<\?xml[^?]*\?>", "", content)
     content = re.sub(r"<!DOCTYPE[^>]*>", "", content)
@@ -48,6 +70,11 @@ def _prefix_ids(svg_content: str, prefix: str) -> str:
         )
         svg_content = re.sub(
             rf'href="#{re.escape(old_id)}"', f'href="#{new_id}"', svg_content
+        )
+        svg_content = re.sub(
+            rf'xlink:href="#{re.escape(old_id)}"',
+            f'xlink:href="#{new_id}"',
+            svg_content,
         )
     return svg_content
 
