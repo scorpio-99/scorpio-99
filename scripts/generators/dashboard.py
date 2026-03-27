@@ -168,6 +168,55 @@ def _render_tech_section(section_idx: int, name: str, folder: str,
     return parts, y
 
 
+# ── Streak & activity stats ───────────────────────────────────
+
+def _calculate_streak(days: list[ContributionDay]) -> tuple[int, int]:
+    """Return (current_streak, longest_streak) in days."""
+    if not days:
+        return 0, 0
+    longest = 0
+    streak = 0
+    prev_date = None
+    for day in days:
+        if day.level > 0:
+            if prev_date and (day.date - prev_date).days == 1:
+                streak += 1
+            else:
+                streak = 1
+            longest = max(longest, streak)
+        else:
+            streak = 0
+        prev_date = day.date
+    return streak, longest
+
+
+def _most_productive_day(days: list[ContributionDay]) -> str:
+    names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    counts = [0] * 7
+    for day in days:
+        if day.level > 0:
+            counts[day.date.weekday()] += 1
+    return names[counts.index(max(counts))]
+
+
+def _avg_per_week(days: list[ContributionDay]) -> float:
+    weeks = _build_weeks(days)
+    if not weeks:
+        return 0
+    active = sum(1 for w in weeks if any(d.level > 0 for d in w))
+    total = sum(d.level for d in days)
+    return round(total / max(active, 1), 1)
+
+
+# ── Info line helper ──────────────────────────────────────────
+
+def _info_line(y: int, key: str, val: str) -> list[str]:
+    return [
+        f'<text x="{PAD + 16}" y="{y}" fill="{THEME["text_dim"]}" font-size="12" font-family="{THEME["font_mono"]}">{escape(key)}</text>',
+        f'<text x="{PAD + 200}" y="{y}" fill="{THEME["text"]}" font-size="12" font-family="{THEME["font_mono"]}">{escape(val)}</text>',
+    ]
+
+
 # ── Main generate ─────────────────────────────────────────────
 
 def generate_svg(days: list[ContributionDay], total: int,
@@ -182,11 +231,11 @@ def generate_svg(days: list[ContributionDay], total: int,
 
     # ── neofetch ──
     parts.extend(_prompt(y, "neofetch"))
-    y += LINE_H + 32  # extra space before large 36px numbers
+    y += LINE_H + 32
 
     items = [
         (f"{stats.total_contributions:,}", "contributions"),
-        (str(stats.repos), "repos"),
+        (str(stats.repos), "own repos"),
         (str(stats.stars), "stars"),
     ]
     spacing = (WIDTH - 2 * PAD) / len(items)
@@ -205,15 +254,35 @@ def generate_svg(days: list[ContributionDay], total: int,
 
     # ── contributions ──
     parts.extend(_prompt(y, "cat contributions.log"))
-    y += LINE_H + 12  # small elements follow (9px month labels)
+    y += LINE_H + 12
 
     chart_parts, chart_h = _render_chart(weeks, PAD + 16, y)
     parts.extend(chart_parts)
     y += chart_h + 20
 
+    # ── uptime / streak ──
+    current_streak, longest_streak = _calculate_streak(days)
+    best_day = _most_productive_day(days)
+    avg = _avg_per_week(days)
+
+    parts.extend(_prompt(y, "uptime"))
+    y += LINE_H + 10
+
+    for key, val in [
+        ("current streak", f"{current_streak} days"),
+        ("longest streak", f"{longest_streak} days"),
+        ("best day", best_day),
+        ("top languages", ", ".join(stats.top_languages)),
+        ("member since", str(stats.member_since)),
+    ]:
+        parts.extend(_info_line(y, key, val))
+        y += LINE_H
+
+    y += 16
+
     # ── tech stack ──
     parts.extend(_prompt(y, "ls tools"))
-    y += LINE_H + 14  # medium elements follow (13px headers)
+    y += LINE_H + 14
 
     tech_x = PAD + 16
     for section_idx, (name, folder, items) in enumerate(TECH_STACK):

@@ -2,7 +2,7 @@
 
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -19,19 +19,30 @@ class GitHubStats:
     repos: int = 0
     stars: int = 0
     total_contributions: int = 0
+    member_since: int = 0
+    top_languages: list[str] = field(default_factory=list)
 
 
 QUERY = """
 query($login: String!) {
   user(login: $login) {
+    createdAt
     contributionsCollection { contributionYears }
 
     allRepos: repositories(ownerAffiliations: OWNER, isFork: false) {
       totalCount
     }
 
-    repositories(first: 100, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
+    publicRepos: repositories(first: 100, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
       nodes { stargazerCount }
+    }
+
+    allReposWithLang: repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
+      nodes {
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+          edges { size node { name } }
+        }
+      }
     }
   }
 }
@@ -125,15 +136,29 @@ def fetch_stats(username: str) -> GitHubStats:
 
     data = _graphql(token, QUERY, {"login": username})
     user = _get_nested(data, "data", "user")
+    contribs = _get_nested(user, "contributionsCollection")
 
-    repo_nodes: list[dict[str, Any]] = _get_nested(user, "repositories", "nodes")
-    stars = sum(n.get("stargazerCount", 0) for n in repo_nodes)
+    public_nodes: list[dict[str, Any]] = _get_nested(user, "publicRepos", "nodes")
+    stars = sum(n.get("stargazerCount", 0) for n in public_nodes)
 
-    years: list[int] = _get_nested(user, "contributionsCollection", "contributionYears")
+    years: list[int] = contribs["contributionYears"]
     total_contributions = _fetch_total_contributions(token, username, years)
+
+    # Top languages from ALL repos by bytes (public + private)
+    lang_bytes: dict[str, int] = {}
+    for node in _get_nested(user, "allReposWithLang", "nodes"):
+        for edge in node.get("languages", {}).get("edges", []):
+            name = edge["node"]["name"]
+            lang_bytes[name] = lang_bytes.get(name, 0) + edge["size"]
+    top_languages = sorted(lang_bytes, key=lang_bytes.get, reverse=True)[:3]
+
+    created = user.get("createdAt", "")
+    member_since = int(created[:4]) if created else 0
 
     return GitHubStats(
         repos=_get_nested(user, "allRepos", "totalCount"),
         stars=stars,
         total_contributions=total_contributions,
+        member_since=member_since,
+        top_languages=top_languages,
     )
