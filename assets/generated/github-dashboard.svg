@@ -8,7 +8,7 @@
 <text x="420.0" y="22" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace" text-anchor="middle">scorpio-99 — bash</text>
 <text x="24" y="56" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="56" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">neofetch</text>
-<text x="123.0" y="94" fill="#ffffff" font-size="28" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">1,327</text>
+<text x="123.0" y="94" fill="#ffffff" font-size="28" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">1,329</text>
 <text x="123.0" y="114" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">contributions</text>
 <text x="321.0" y="94" fill="#ffffff" font-size="28" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">19</text>
 <text x="321.0" y="114" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">repos</text>
@@ -403,7 +403,7 @@
 <rect x="540" y="212" width="7" height="7" rx="1.5" fill="#0e4429"/>
 <rect x="540" y="221" width="7" height="7" rx="1.5" fill="#0e4429"/>
 <rect x="540" y="230" width="7" height="7" rx="1.5" fill="#0e4429"/>
-<rect x="540" y="239" width="7" height="7" rx="1.5" fill="#26a641"/>
+<rect x="540" y="239" width="7" height="7" rx="1.5" fill="#39d353"/>
 <text x="439" y="275" fill="#8b949e" font-size="9" font-family="Consolas, Monaco, monospace">Less</text>
 <rect x="463" y="267" width="8" height="8" rx="1.5" fill="#161b22"/>
 <rect x="474" y="267" width="8" height="8" rx="1.5" fill="#0e4429"/>
