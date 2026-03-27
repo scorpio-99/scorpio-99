@@ -1,5 +1,7 @@
 <div align="center">
 
+![GitHub Activity Graph](assets/github-contribution-graph.svg)
+
 ## Tech Stack
 
 ### Languages
