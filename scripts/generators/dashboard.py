@@ -56,8 +56,8 @@ def _render_titlebar() -> list[str]:
     parts: list[str] = []
     parts.append(f'<rect x="0" y="0" width="{WIDTH}" height="36" fill="{TITLEBAR_BG}" rx="8"/>')
     parts.append(f'<rect x="0" y="18" width="{WIDTH}" height="18" fill="{TITLEBAR_BG}"/>')
-    for i, color in enumerate(["#ff5f57", "#febc2e", "#28c840"]):
-        parts.append(f'<circle cx="{20 + i * 20}" cy="18" r="6" fill="{color}"/>')
+    for i, color in enumerate(["#28c840", "#febc2e", "#ff5f57"]):
+        parts.append(f'<circle cx="{WIDTH - 20 - i * 20}" cy="18" r="6" fill="{color}"/>')
     parts.append(
         f'<text x="{WIDTH / 2}" y="22" fill="{DIM}" font-size="12"'
         f' font-family="{FONT_MONO}" text-anchor="middle">scorpio-99 — bash</text>'
@@ -65,21 +65,21 @@ def _render_titlebar() -> list[str]:
     return parts
 
 
-# ── Heatmap ───────────────────────────────────────────────────
+# ── Line Chart ────────────────────────────────────────────────
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-DAY_LABELS = {1: "Mon", 3: "Wed", 5: "Fri"}
-HM_CELL = 7
-HM_GAP = 2
-HM_STEP = HM_CELL + HM_GAP
-HM_LEFT = 32  # space for day labels
+CHART_H = 50
 
 
-def _render_heatmap(weeks: list[list[ContributionDay]], x0: float, y0: float) -> tuple[list[str], int]:
+def _week_total(week: list[ContributionDay]) -> int:
+    return sum(d.level for d in week)
+
+
+def _render_chart(weeks: list[list[ContributionDay]], x0: float, y0: float) -> tuple[list[str], int]:
     parts: list[str] = []
-    grid_x = x0 + HM_LEFT
-    month_y = y0
+    graph_w = WIDTH - 2 * PAD - 40
+    step = graph_w / max(len(weeks) - 1, 1)
 
     # Month labels
     seen: set[str] = set()
@@ -90,40 +90,53 @@ def _render_heatmap(weeks: list[list[ContributionDay]], x0: float, y0: float) ->
         seen.add(key)
         label = MONTHS[week[0].date.month - 1]
         parts.append(
-            f'<text x="{grid_x + col * HM_STEP}" y="{month_y}" fill="{DIM}"'
+            f'<text x="{x0 + col * step}" y="{y0}" fill="{DIM}"'
             f' font-size="9" font-family="{FONT_MONO}">{label}</text>'
         )
 
-    grid_y = y0 + 10
+    y0 += 14
+    baseline = y0 + CHART_H
+    max_total = max(_week_total(w) for w in weeks) or 1
 
-    # Day labels
-    for row, label in DAY_LABELS.items():
+    # Grid lines
+    for i in range(3):
+        gy = y0 + i * (CHART_H / 2)
         parts.append(
-            f'<text x="{x0 + HM_LEFT - 4}" y="{grid_y + row * HM_STEP + HM_CELL}"'
-            f' fill="{DIM}" font-size="9" font-family="{FONT_MONO}" text-anchor="end">{label}</text>'
+            f'<line x1="{x0}" y1="{gy}" x2="{x0 + graph_w}" y2="{gy}"'
+            f' stroke="{BORDER}" stroke-width="0.5"/>'
         )
 
-    # Cells
+    # Build points
+    points = []
     for col, week in enumerate(weeks):
-        for day in week:
-            parts.append(
-                f'<rect x="{grid_x + col * HM_STEP}" y="{grid_y + day.weekday * HM_STEP}"'
-                f' width="{HM_CELL}" height="{HM_CELL}" rx="1.5"'
-                f' fill="{LEVELS.get(day.level, LEVELS[0])}"/>'
-            )
+        total = _week_total(week)
+        x = x0 + col * step
+        y = baseline - (total / max_total) * CHART_H
+        points.append((x, y))
 
-    # Legend
-    bottom = grid_y + 7 * HM_STEP + 18
-    lx = grid_x + len(weeks) * HM_STEP - 110
-    parts.append(f'<text x="{lx}" y="{bottom}" fill="{DIM}" font-size="9" font-family="{FONT_MONO}">Less</text>')
-    lx += 24
-    for lvl in range(5):
-        parts.append(f'<rect x="{lx}" y="{bottom - 8}" width="8" height="8" rx="1.5" fill="{LEVELS[lvl]}"/>')
-        lx += 11
-    parts.append(f'<text x="{lx}" y="{bottom}" fill="{DIM}" font-size="9" font-family="{FONT_MONO}">More</text>')
+    # Fill area
+    if points:
+        poly = " ".join(f"{x},{y}" for x, y in points)
+        poly = f"{x0},{baseline} {poly} {points[-1][0]},{baseline}"
+        parts.append(
+            f'<polygon points="{poly}" fill="{GREEN}" opacity="0.15"/>'
+        )
 
-    total_h = grid_y + 7 * HM_STEP + 16 - y0
-    return parts, total_h
+    # Line
+    if len(points) > 1:
+        path = f"M{points[0][0]},{points[0][1]}"
+        for x, y in points[1:]:
+            path += f" L{x},{y}"
+        parts.append(
+            f'<path d="{path}" fill="none" stroke="{GREEN}" stroke-width="1.5"/>'
+        )
+
+    # Dots at peaks
+    for x, y in points:
+        if y < baseline - CHART_H * 0.5:
+            parts.append(f'<circle cx="{x}" cy="{y}" r="2" fill="{GREEN}"/>')
+
+    return parts, CHART_H + 24
 
 
 # ── Tech stack section ────────────────────────────────────────
@@ -194,13 +207,12 @@ def generate_svg(days: list[ContributionDay], total: int,
 
     # ── neofetch ──
     parts.extend(_prompt(y, "neofetch"))
-    y += LINE_H + 16
+    y += LINE_H + 18
 
     items = [
         (f"{stats.total_contributions:,}", "contributions"),
         (str(stats.repos), "repos"),
         (str(stats.stars), "stars"),
-        (str(stats.followers), "followers"),
     ]
     spacing = (WIDTH - 2 * PAD) / len(items)
     for i, (val, label) in enumerate(items):
@@ -218,15 +230,15 @@ def generate_svg(days: list[ContributionDay], total: int,
 
     # ── contributions ──
     parts.extend(_prompt(y, "cat contributions.log"))
-    y += LINE_H + 12
+    y += LINE_H + 18
 
-    hm_parts, hm_h = _render_heatmap(weeks, PAD + 16, y)
-    parts.extend(hm_parts)
-    y += hm_h + 20
+    chart_parts, chart_h = _render_chart(weeks, PAD + 16, y)
+    parts.extend(chart_parts)
+    y += chart_h + 20
 
     # ── tech stack ──
-    parts.extend(_prompt(y, "ls tools/"))
-    y += LINE_H + 12
+    parts.extend(_prompt(y, "ls tools"))
+    y += LINE_H + 18
 
     tech_x = PAD + 16
     for section_idx, (name, folder, items) in enumerate(TECH_STACK):
