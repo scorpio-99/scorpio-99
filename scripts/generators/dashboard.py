@@ -67,18 +67,63 @@ def _render_titlebar() -> list[str]:
 
 # ── Heatmap ───────────────────────────────────────────────────
 
-def _render_heatmap(weeks: list[list[ContributionDay]], x0: float, y0: float) -> list[str]:
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+DAY_LABELS = {1: "Mon", 3: "Wed", 5: "Fri"}
+HM_CELL = 7
+HM_GAP = 2
+HM_STEP = HM_CELL + HM_GAP
+HM_LEFT = 32  # space for day labels
+
+
+def _render_heatmap(weeks: list[list[ContributionDay]], x0: float, y0: float) -> tuple[list[str], int]:
     parts: list[str] = []
-    cell, gap = 7, 2
-    step = cell + gap
+    grid_x = x0 + HM_LEFT
+    month_y = y0
+
+    # Month labels
+    seen: set[str] = set()
+    for col, week in enumerate(weeks):
+        key = week[0].month_key
+        if key in seen:
+            continue
+        seen.add(key)
+        label = MONTHS[week[0].date.month - 1]
+        parts.append(
+            f'<text x="{grid_x + col * HM_STEP}" y="{month_y}" fill="{DIM}"'
+            f' font-size="9" font-family="{FONT_MONO}">{label}</text>'
+        )
+
+    grid_y = y0 + 10
+
+    # Day labels
+    for row, label in DAY_LABELS.items():
+        parts.append(
+            f'<text x="{x0 + HM_LEFT - 4}" y="{grid_y + row * HM_STEP + HM_CELL}"'
+            f' fill="{DIM}" font-size="9" font-family="{FONT_MONO}" text-anchor="end">{label}</text>'
+        )
+
+    # Cells
     for col, week in enumerate(weeks):
         for day in week:
             parts.append(
-                f'<rect x="{x0 + col * step}" y="{y0 + day.weekday * step}"'
-                f' width="{cell}" height="{cell}" rx="1.5"'
+                f'<rect x="{grid_x + col * HM_STEP}" y="{grid_y + day.weekday * HM_STEP}"'
+                f' width="{HM_CELL}" height="{HM_CELL}" rx="1.5"'
                 f' fill="{LEVELS.get(day.level, LEVELS[0])}"/>'
             )
-    return parts
+
+    # Legend
+    bottom = grid_y + 7 * HM_STEP + 18
+    lx = grid_x + len(weeks) * HM_STEP - 110
+    parts.append(f'<text x="{lx}" y="{bottom}" fill="{DIM}" font-size="9" font-family="{FONT_MONO}">Less</text>')
+    lx += 24
+    for lvl in range(5):
+        parts.append(f'<rect x="{lx}" y="{bottom - 8}" width="8" height="8" rx="1.5" fill="{LEVELS[lvl]}"/>')
+        lx += 11
+    parts.append(f'<text x="{lx}" y="{bottom}" fill="{DIM}" font-size="9" font-family="{FONT_MONO}">More</text>')
+
+    total_h = grid_y + 7 * HM_STEP + 16 - y0
+    return parts, total_h
 
 
 # ── Tech stack section ────────────────────────────────────────
@@ -175,8 +220,9 @@ def generate_svg(days: list[ContributionDay], total: int,
     parts.extend(_prompt(y, "cat contributions.log"))
     y += LINE_H + 12
 
-    parts.extend(_render_heatmap(weeks, PAD + 16, y))
-    y += 7 * 9 + 36
+    hm_parts, hm_h = _render_heatmap(weeks, PAD + 16, y)
+    parts.extend(hm_parts)
+    y += hm_h + 20
 
     # ── tech stack ──
     parts.extend(_prompt(y, "ls tools/"))
