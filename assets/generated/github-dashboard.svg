@@ -8,7 +8,7 @@
 <text x="420.0" y="22" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace" text-anchor="middle">scorpio-99 — bash</text>
 <text x="24" y="56" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="56" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">neofetch</text>
-<text x="156.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">1,335</text>
+<text x="156.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">1,336</text>
 <text x="156.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">contributions</text>
 <text x="420.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">20</text>
 <text x="420.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">own repos</text>
@@ -49,7 +49,7 @@
 <text x="24" y="344" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="344" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">uptime</text>
 <text x="40" y="376" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">current streak</text>
-<text x="224" y="376" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">5 days</text>
+<text x="224" y="376" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">0 days</text>
 <text x="40" y="398" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">longest streak</text>
 <text x="224" y="398" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">10 days</text>
 <text x="40" y="420" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">best day</text>
