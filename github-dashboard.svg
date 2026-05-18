@@ -8,13 +8,13 @@
 <text x="420.0" y="22" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace" text-anchor="middle">scorpio-99 — bash</text>
 <text x="24" y="56" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="56" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">neofetch</text>
-<text x="123.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">2,458</text>
+<text x="123.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">2,478</text>
 <text x="123.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">total contributions</text>
 <text x="321.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">21</text>
 <text x="321.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">own repos</text>
 <text x="519.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">48</text>
 <text x="519.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">overall stars</text>
-<text x="717.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">1,380</text>
+<text x="717.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">1,404</text>
 <text x="717.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">npm downloads</text>
 <text x="24" y="166" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="166" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">cat contributions.log</text>
@@ -41,7 +41,7 @@
 <circle cx="61.283018867924525" cy="221.14285714285714" r="1.0" fill="#21262d"/>
 <circle cx="61.283018867924525" cy="235.42857142857142" r="4.6" fill="#39d353"/>
 <circle cx="61.283018867924525" cy="249.71428571428572" r="2.8" fill="#006d32"/>
-<circle cx="61.283018867924525" cy="264.00000000000006" r="3.7" fill="#26a641"/>
+<circle cx="61.283018867924525" cy="264.00000000000006" r="2.8" fill="#006d32"/>
 <circle cx="61.283018867924525" cy="278.28571428571433" r="1.0" fill="#21262d"/>
 <circle cx="61.283018867924525" cy="292.5714285714286" r="1.9" fill="#0e4429"/>
 <circle cx="61.283018867924525" cy="306.8571428571429" r="1.9" fill="#0e4429"/>
@@ -217,13 +217,13 @@
 <circle cx="416.0" cy="235.42857142857142" r="1.0" fill="#21262d"/>
 <circle cx="416.0" cy="249.71428571428572" r="1.9" fill="#0e4429"/>
 <circle cx="416.0" cy="264.00000000000006" r="1.9" fill="#0e4429"/>
-<circle cx="416.0" cy="278.28571428571433" r="2.8" fill="#006d32"/>
+<circle cx="416.0" cy="278.28571428571433" r="1.9" fill="#0e4429"/>
 <circle cx="416.0" cy="292.5714285714286" r="1.9" fill="#0e4429"/>
 <circle cx="416.0" cy="306.8571428571429" r="1.0" fill="#21262d"/>
 <circle cx="430.188679245283" cy="221.14285714285714" r="1.0" fill="#21262d"/>
 <circle cx="430.188679245283" cy="235.42857142857142" r="1.0" fill="#21262d"/>
 <circle cx="430.188679245283" cy="249.71428571428572" r="1.9" fill="#0e4429"/>
-<circle cx="430.188679245283" cy="264.00000000000006" r="2.8" fill="#006d32"/>
+<circle cx="430.188679245283" cy="264.00000000000006" r="1.9" fill="#0e4429"/>
 <circle cx="430.188679245283" cy="278.28571428571433" r="1.9" fill="#0e4429"/>
 <circle cx="430.188679245283" cy="292.5714285714286" r="1.9" fill="#0e4429"/>
 <circle cx="430.188679245283" cy="306.8571428571429" r="1.9" fill="#0e4429"/>
@@ -316,7 +316,7 @@
 <circle cx="614.6415094339624" cy="249.71428571428572" r="1.0" fill="#21262d"/>
 <circle cx="614.6415094339624" cy="264.00000000000006" r="1.0" fill="#21262d"/>
 <circle cx="614.6415094339624" cy="278.28571428571433" r="2.8" fill="#006d32"/>
-<circle cx="614.6415094339624" cy="292.5714285714286" r="4.6" fill="#39d353"/>
+<circle cx="614.6415094339624" cy="292.5714285714286" r="3.7" fill="#26a641"/>
 <circle cx="614.6415094339624" cy="306.8571428571429" r="3.7" fill="#26a641"/>
 <circle cx="628.8301886792453" cy="221.14285714285714" r="1.0" fill="#21262d"/>
 <circle cx="628.8301886792453" cy="235.42857142857142" r="1.0" fill="#21262d"/>
@@ -344,18 +344,18 @@
 <circle cx="671.3962264150944" cy="249.71428571428572" r="1.9" fill="#0e4429"/>
 <circle cx="671.3962264150944" cy="264.00000000000006" r="1.9" fill="#0e4429"/>
 <circle cx="671.3962264150944" cy="278.28571428571433" r="1.9" fill="#0e4429"/>
-<circle cx="671.3962264150944" cy="292.5714285714286" r="3.7" fill="#26a641"/>
+<circle cx="671.3962264150944" cy="292.5714285714286" r="2.8" fill="#006d32"/>
 <circle cx="671.3962264150944" cy="306.8571428571429" r="1.0" fill="#21262d"/>
 <circle cx="685.5849056603774" cy="221.14285714285714" r="1.0" fill="#21262d"/>
 <circle cx="685.5849056603774" cy="235.42857142857142" r="1.0" fill="#21262d"/>
 <circle cx="685.5849056603774" cy="249.71428571428572" r="1.9" fill="#0e4429"/>
 <circle cx="685.5849056603774" cy="264.00000000000006" r="2.8" fill="#006d32"/>
-<circle cx="685.5849056603774" cy="278.28571428571433" r="3.7" fill="#26a641"/>
+<circle cx="685.5849056603774" cy="278.28571428571433" r="2.8" fill="#006d32"/>
 <circle cx="685.5849056603774" cy="292.5714285714286" r="1.9" fill="#0e4429"/>
 <circle cx="685.5849056603774" cy="306.8571428571429" r="1.9" fill="#0e4429"/>
 <circle cx="699.7735849056604" cy="221.14285714285714" r="1.9" fill="#0e4429"/>
 <circle cx="699.7735849056604" cy="235.42857142857142" r="1.9" fill="#0e4429"/>
-<circle cx="699.7735849056604" cy="249.71428571428572" r="4.6" fill="#39d353"/>
+<circle cx="699.7735849056604" cy="249.71428571428572" r="3.7" fill="#26a641"/>
 <circle cx="699.7735849056604" cy="264.00000000000006" r="1.9" fill="#0e4429"/>
 <circle cx="699.7735849056604" cy="278.28571428571433" r="1.9" fill="#0e4429"/>
 <circle cx="699.7735849056604" cy="292.5714285714286" r="2.8" fill="#006d32"/>
@@ -364,7 +364,7 @@
 <circle cx="713.9622641509435" cy="235.42857142857142" r="2.8" fill="#006d32"/>
 <circle cx="713.9622641509435" cy="249.71428571428572" r="2.8" fill="#006d32"/>
 <circle cx="713.9622641509435" cy="264.00000000000006" r="2.8" fill="#006d32"/>
-<circle cx="713.9622641509435" cy="278.28571428571433" r="4.6" fill="#39d353"/>
+<circle cx="713.9622641509435" cy="278.28571428571433" r="3.7" fill="#26a641"/>
 <circle cx="713.9622641509435" cy="292.5714285714286" r="2.8" fill="#006d32"/>
 <circle cx="713.9622641509435" cy="306.8571428571429" r="2.8" fill="#006d32"/>
 <circle cx="728.1509433962265" cy="221.14285714285714" r="2.8" fill="#006d32"/>
@@ -382,12 +382,12 @@
 <circle cx="742.3396226415094" cy="292.5714285714286" r="2.8" fill="#006d32"/>
 <circle cx="742.3396226415094" cy="306.8571428571429" r="4.6" fill="#39d353"/>
 <circle cx="756.5283018867925" cy="221.14285714285714" r="2.8" fill="#006d32"/>
-<circle cx="756.5283018867925" cy="235.42857142857142" r="3.7" fill="#26a641"/>
+<circle cx="756.5283018867925" cy="235.42857142857142" r="2.8" fill="#006d32"/>
 <circle cx="756.5283018867925" cy="249.71428571428572" r="3.7" fill="#26a641"/>
-<circle cx="756.5283018867925" cy="264.00000000000006" r="3.7" fill="#26a641"/>
+<circle cx="756.5283018867925" cy="264.00000000000006" r="2.8" fill="#006d32"/>
 <circle cx="756.5283018867925" cy="278.28571428571433" r="2.8" fill="#006d32"/>
 <circle cx="756.5283018867925" cy="292.5714285714286" r="4.6" fill="#39d353"/>
-<circle cx="756.5283018867925" cy="306.8571428571429" r="4.6" fill="#39d353"/>
+<circle cx="756.5283018867925" cy="306.8571428571429" r="3.7" fill="#26a641"/>
 <circle cx="770.7169811320755" cy="221.14285714285714" r="2.8" fill="#006d32"/>
 <circle cx="770.7169811320755" cy="235.42857142857142" r="2.8" fill="#006d32"/>
 <circle cx="770.7169811320755" cy="249.71428571428572" r="2.8" fill="#006d32"/>
@@ -396,13 +396,13 @@
 <circle cx="770.7169811320755" cy="292.5714285714286" r="4.6" fill="#39d353"/>
 <circle cx="770.7169811320755" cy="306.8571428571429" r="4.6" fill="#39d353"/>
 <circle cx="784.9056603773586" cy="221.14285714285714" r="4.6" fill="#39d353"/>
-<circle cx="784.9056603773586" cy="235.42857142857142" r="1.0" fill="#21262d"/>
+<circle cx="784.9056603773586" cy="235.42857142857142" r="1.9" fill="#0e4429"/>
 <text x="24" y="344" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="344" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">uptime</text>
 <text x="40" y="376" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">current streak</text>
-<text x="224" y="376" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">48 days</text>
+<text x="224" y="376" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">49 days</text>
 <text x="40" y="398" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">longest streak</text>
-<text x="224" y="398" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">48 days</text>
+<text x="224" y="398" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">49 days</text>
 <text x="40" y="420" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">top languages</text>
 <text x="224" y="420" fill="#ffffff" font-size="12" font-family="Consolas, Monaco, monospace">TypeScript, JavaScript, Python</text>
 <text x="40" y="442" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">member since</text>
