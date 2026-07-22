@@ -8,13 +8,13 @@
 <text x="420.0" y="22" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace" text-anchor="middle">scorpio-99 — bash</text>
 <text x="24" y="56" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="56" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">neofetch</text>
-<text x="123.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">3,288</text>
+<text x="123.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">3,312</text>
 <text x="123.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">total contributions</text>
-<text x="321.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">23</text>
+<text x="321.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">24</text>
 <text x="321.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">own repos</text>
 <text x="519.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">85</text>
 <text x="519.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">overall stars</text>
-<text x="717.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">5,004</text>
+<text x="717.0" y="110" fill="#ffffff" font-size="36" font-weight="bold" font-family="Consolas, Monaco, monospace" text-anchor="middle">5,275</text>
 <text x="717.0" y="130" fill="#8b949e" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">npm downloads</text>
 <text x="24" y="166" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="166" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">cat contributions.log</text>
@@ -398,7 +398,7 @@
 <circle cx="784.9056603773586" cy="221.14285714285714" r="2.8" fill="#006d32"/>
 <circle cx="784.9056603773586" cy="235.42857142857142" r="1.9" fill="#0e4429"/>
 <circle cx="784.9056603773586" cy="249.71428571428572" r="1.9" fill="#0e4429"/>
-<circle cx="784.9056603773586" cy="264.00000000000006" r="1.9" fill="#0e4429"/>
+<circle cx="784.9056603773586" cy="264.00000000000006" r="3.7" fill="#26a641"/>
 <text x="24" y="344" fill="#39d353" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="344" fill="#ffffff" font-size="13" font-family="Consolas, Monaco, monospace">uptime</text>
 <text x="40" y="376" fill="#8b949e" font-size="12" font-family="Consolas, Monaco, monospace">current streak</text>
