@@ -412,6 +412,7 @@
 <rect x="779.7" y="258.6" width="10.9" height="10.9" rx="2" fill="#39d353" class="t-l4 a-pulse"/>
 <rect x="779.7" y="272.8" width="10.9" height="10.9" rx="2" fill="#0e4429" class="t-l1 a-pulse"/>
 <rect x="779.7" y="287.1" width="10.9" height="10.9" rx="2" fill="#0e4429" class="t-l1 a-pulse"/>
+<rect x="779.7" y="301.4" width="10.9" height="10.9" rx="2" fill="#21262d" class="t-l0 a-pulse"/>
 <text x="24" y="344" fill="#39d353" class="t-green" font-size="13" font-family="Consolas, Monaco, monospace">$ </text>
 <text x="40" y="344" fill="#ffffff" class="t-text" font-size="13" font-family="Consolas, Monaco, monospace">uptime</text>
 <rect x="0" y="326" width="536" height="158" fill="url(#ambient)" class="ambient"/>
@@ -1269,5 +1270,5 @@
 </svg>
 <text x="232.0" y="1448" fill="#ffffff" class="t-text" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="middle">Scrum</text>
 <text x="24" y="1500" fill="#39d353" class="t-green" font-size="13" font-family="Consolas, Monaco, monospace">$ <tspan fill="#8b949e" class="t-text_dim">_</tspan></text>
-<text x="816" y="1500" fill="#8b949e" class="t-text_dim" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="end">last update: 2026-10-30 22:11 UTC</text>
+<text x="816" y="1500" fill="#8b949e" class="t-text_dim" font-size="11" font-family="Consolas, Monaco, monospace" text-anchor="end">last update: 2026-10-31 05:12 UTC</text>
 </svg>
